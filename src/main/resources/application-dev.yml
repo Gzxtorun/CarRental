@@ -1,0 +1,12 @@
+carRental:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    host: localhost
+    port: 3306
+    database: car rental
+    username: root
+    password: 12345678
+  redis:
+    host: localhost
+    port: 6379
+    password:

@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+      driver-class-name: ${carRental.datasource.driver-class-name}
+      url: jdbc:mysql://${carRental.datasource.host}:${carRental.datasource.port}/${carRental.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true&rewriteBatchedStatements=true
+      username: ${carRental.datasource.username}
+      password: ${carRental.datasource.password}
+      redis:
+        host: ${sky.redis.host}
+        port: ${sky.redis.port}
+        password: ${sky.redis.password}
+        database: ${sky.redis.database}
+logging:
+  level:
+    com.carRental.mybatis plus: debug
+    org.mybatis: debug
+    java.sql.Connection: debug
+    java.sql.Statement: debug
+    org.apache.ibatis: debug
+    org.springframework.cache: debug
+    org.springframework.data.redis: debug
+
+car-rental:
+  jwt:
+    user-secret-key: zxr666
+    # 设置jwt过期时间
+    user-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    user-token-name: token
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package:  com.carRental.server.controller.user,com.carRental.server.controller.admin
+  global-config:
+    db-config:
+      id-type: auto
+  mapper-locations:
+
